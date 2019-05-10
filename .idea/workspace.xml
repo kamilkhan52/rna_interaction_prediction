@@ -2,22 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="019f0fa5-a110-4cbb-89a9-5bb74d7b1402" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Kamil.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/rna_interaction_prediction.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/converted_seq_test.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/deepbind_negative_training.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/deepbind_positive_training.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/deepbind_test.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kmer_maker.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kmer_negative_training.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kmer_positive_training.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kmer_test.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/neural_network.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/seq_negative_training.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/seq_positive_training.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/seq_test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/neural_network.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,11 +42,48 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/neural_network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="48" column="56" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="56" />
+            <state relative-caret-position="-840">
+              <caret line="57" column="33" lean-forward="true" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kmer_maker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="68" column="57" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/converted_seq_test.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-10068" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seq_negative_training.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seq_positive_training.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -75,6 +109,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>type1</find>
+      <find>2</find>
     </findStrings>
     <replaceStrings>
       <replace>type2</replace>
@@ -87,7 +122,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/seq_test.csv" />
+        <option value="$PROJECT_DIR$/converted_seq_test.csv" />
         <option value="$PROJECT_DIR$/neural_network.py" />
+        <option value="$PROJECT_DIR$/kmer_maker.py" />
       </list>
     </option>
   </component>
@@ -117,7 +155,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/neural_network.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/kmer_maker.py" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
@@ -180,9 +218,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="kmer_maker" type="PythonConfigurationType" factoryName="Python">
+      <module name="rna_interaction_prediction" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Kamil\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kmer_maker.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.Main" />
       <item itemvalue="Python.NN" />
+      <item itemvalue="Python.kmer_maker" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -196,11 +256,18 @@
       <option name="presentableId" value="Default" />
       <updated>1557464907498</updated>
     </task>
+    <task id="LOCAL-00001" summary="With int Types">
+      <created>1557478728943</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1557478728943</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
@@ -221,21 +288,15 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="With int Types" />
+    <option name="LAST_COMMIT_MESSAGE" value="With int Types" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/seq_positive_training.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/pandas/io/parsers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="701" selection-start-line="701" selection-end-line="701" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kmer_negative_training.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4122" selection-start-line="3" selection-start-column="4122" selection-end-line="3" selection-end-column="4122" />
         </state>
       </provider>
     </entry>
@@ -252,10 +313,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/seq_test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kmer_negative_training.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="51">
+          <caret line="3" column="4122" selection-start-line="3" selection-start-column="4122" selection-end-line="3" selection-end-column="4122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seq_positive_training.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seq_negative_training.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="67" selection-start-line="7" selection-start-column="67" selection-end-line="7" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/converted_seq_test.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10068" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kmer_maker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="68" column="57" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/neural_network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="48" column="56" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="56" />
+        <state relative-caret-position="-840">
+          <caret line="57" column="33" lean-forward="true" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

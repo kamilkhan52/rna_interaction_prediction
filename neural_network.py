@@ -13,7 +13,8 @@ from sklearn.metrics import classification_report, confusion_matrix
 import itertools as it
 
 rows_to_read = 5000
-
+input_file = 'converted_seq_test.csv'
+# 'kmer_positive_training.csv'
 # column headings
 # dictionary of kmers
 all_bases = 'ACGT'
@@ -24,25 +25,21 @@ headers = []
 headers2 = []
 for tup in all_combinations:
     headers.append(''.join(tup))
-    headers2.append(''.join(tup) + str(2))
 for tup in all_combinations:
     headers.append(''.join(tup))
-    headers2.append(''.join(tup) + str(2))
 
 for n in range(0, 18):
     headers.append("Type" + str(int(n)) + str(1))
-    headers2.append("Type" + str(int(n)) + str(2))
 
 headers.append("Label1")
-headers2.append("Label2")
 
 # read data
 print(str(headers))
 print(str(headers2))
 
-kmer_neg_data = pd.read_csv('kmer_negative_training.csv', nrows=rows_to_read, error_bad_lines=False,
+kmer_neg_data = pd.read_csv(input_file, error_bad_lines=False,
                             names=headers)
-kmer_pos_data = pd.read_csv('kmer_positive_training.csv', nrows=rows_to_read, error_bad_lines=False,
+kmer_pos_data = pd.read_csv(input_file, error_bad_lines=False,
                             names=headers)
 print(len(kmer_pos_data.columns))
 
@@ -103,26 +100,26 @@ label = kmer_full_data.loc[:, 'Label1']
 x_train, x_test, y_train, y_test = train_test_split(features, label)
 np.set_printoptions(precision=3)
 
-n_iterations = 10000
+n_iterations = 500
 hidden_layers = (50, 50, 50)
 
-# scaler = StandardScaler()
-# scaler.fit(x_train)
-# StandardScaler(copy=True, with_mean=True, with_std=True)
-#
-# # Now apply the transformations to the data:
-# x_train = scaler.transform(x_train)
-# x_test = scaler.transform(x_test)
+scaler = StandardScaler()
+scaler.fit(x_train)
+StandardScaler(copy=True, with_mean=True, with_std=True)
+
+# Now apply the transformations to the data:
+x_train = scaler.transform(x_train)
+x_test = scaler.transform(x_test)
 
 mlp = MLPClassifier(hidden_layer_sizes=hidden_layers, max_iter=n_iterations)
 mlp.fit(x_train, y_train)
 
-MLPClassifier(activation='relu', alpha=0.0001, batch_size='auto', beta_1=0.9,
+MLPClassifier(activation='logistic', alpha=0.0001, batch_size='auto', beta_1=0.9,
               beta_2=0.999, early_stopping=False, epsilon=1e-08,
               hidden_layer_sizes=hidden_layers, learning_rate='constant',
               learning_rate_init=0.001, max_iter=n_iterations, momentum=0.9,
               nesterovs_momentum=True, power_t=0.5, random_state=None,
-              shuffle=True, solver='adam', tol=0.0001, validation_fraction=0.1,
+              shuffle=True, solver='sgd', tol=0.0001, validation_fraction=0.1,
               verbose=False, warm_start=False)
 
 predictions = mlp.predict(x_test)
