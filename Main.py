@@ -70,27 +70,29 @@ def run_random_search():
 
 rows_to_read = 10000
 # read data
-kmer_neg_data = pd.read_csv('kmer_negative_training.csv', nrows=rows_to_read, header=None, error_bad_lines=False)
-kmer_pos_data = pd.read_csv('kmer_positive_training.csv', nrows=rows_to_read, header=None, error_bad_lines=False)
-print(len(kmer_pos_data.columns))
-
-kmer_full_data = pd.concat([kmer_pos_data, kmer_neg_data], ignore_index=True, join='outer')
+# kmer_neg_data = pd.read_csv('kmer_negative_training.csv', nrows=rows_to_read, header=None, error_bad_lines=False)
+# kmer_pos_data = pd.read_csv('kmer_positive_training.csv', nrows=rows_to_read, header=None, error_bad_lines=False)
+# print(len(kmer_pos_data.columns))
+#
+# kmer_full_data = pd.concat([kmer_pos_data, kmer_neg_data], ignore_index=True, join='outer')
+kmer_full_data = pd.read_csv('converted_seq_test.csv', header=None,
+                             error_bad_lines=False)  # reading from kmer_maker
 
 features = kmer_full_data.iloc[:, 0: 2066]
 label = kmer_full_data.iloc[:, 2066]
-
+print(label)
 x_train, x_test, y_train, y_test = train_test_split(features, label)
 np.set_printoptions(precision=3)
 
 n_iterations = 10
 n_comp = 200
 
-# clf = RandomForestClassifier(n_estimators=100)
+clf = RandomForestClassifier(n_estimators=10000)
 
 # Train the model using the training sets
-# clf.fit(x_train, y_train)
+clf.fit(x_train, y_train)
 
-# print("Accuracy:", clf.score(x_test, y_test))
+print("Accuracy:", clf.score(x_test, y_test))
 
-setup_random_search()
-run_random_search()
+# setup_random_search()
+# run_random_search()
