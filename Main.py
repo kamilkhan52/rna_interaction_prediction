@@ -31,18 +31,18 @@ def report(results, n_top=3):
 def setup_random_search():
     global random_grid
     # set up hyper parameter search
-    # Number of trees in random forest
+    # The range and step-size for the number of trees
     n_estimators = [int(x) for x in np.linspace(start=200, stop=2000, num=10)]
-    # Number of features to consider at every split
+    # Feature selection algorithms to explore
     max_features = ['auto', 'sqrt']
-    # Maximum number of levels in tree
+    # The range and step-size for the max number of levels in a tree
     max_depth = [int(x) for x in np.linspace(10, 110, num=11)]
     max_depth.append(None)
-    # Minimum number of samples required to split a node
+    # Minimum number of samples requirement for node-splitting
     min_samples_split = [2, 5, 10]
-    # Minimum number of samples required at each leaf node
+    # Minimum number of samples requirement for declaring leaf-node
     min_samples_leaf = [1, 2, 4]
-    # Method of selecting samples for training each tree
+    # Bootstrap enable/disable
     bootstrap = [True, False]
     # Create the random grid
     random_grid = {'n_estimators': n_estimators,
