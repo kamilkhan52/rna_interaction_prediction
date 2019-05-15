@@ -1,0 +1,145 @@
+import numpy as np
+import pandas as pd
+from scipy.spatial import distance
+import math as math
+import random
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import RandomizedSearchCV
+from time import time
+import re
+import pickle
+import itertools as it
+import csv
+
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 1000)
+
+# dictionary of kmers
+all_bases = 'ACGT'
+keywords = it.product(all_bases, repeat=5)
+# print(type(keywords))
+all_combinations = list(keywords)
+', '.join(keywords)
+dictOfKmers = {i: 0 for i in all_combinations}
+
+input_rows_read = 500
+print(dictOfKmers)
+
+bases = ['A', 'C', 'G', 'T']
+kmer_list = []
+
+kmer_index = 1
+
+
+def add_special_kmers():
+    global present_kmer
+    global kmer_index
+    kmer_list.append(str(kmer_index) + present_kmer)
+    kmer_index += 1
+    first_k_minus_one = present_kmer[:4]
+    last_k_minus_one = present_kmer[-4:]
+
+    for base in bases:
+        new_kmer = base + first_k_minus_one
+        kmer_list.append(str(kmer_index) + new_kmer)
+        kmer_index += 1
+
+        # print("new_kmer added: " + str(new_kmer))
+
+    for base in bases:
+        new_kmer = last_k_minus_one + base
+        kmer_list.append(str(kmer_index) + new_kmer)
+        kmer_index += 1
+        # print("new_kmer added: " + str(new_kmer))
+
+    # print("first_k_minus_one: " + str(first_k_minus_one))
+    # print("last_k_minus_one: " + str(last_k_minus_one))
+
+
+for base1 in bases:
+    for base2 in bases:
+        for base3 in bases:
+            for base4 in bases:
+                for base5 in bases:
+                    present_kmer = base1 + base2 + base3 + base4 + base5
+                    add_special_kmers()
+
+print(kmer_list)
+print(len(kmer_list))
+
+alt_dataset = dict.fromkeys(kmer_list, 0)
+
+
+def convert_seq_to_kmer():
+    seq_number = 1
+    full_row = []
+    f = open('converted_seq_test.csv', 'w')  # open empty file
+    w = csv.writer(f)  # write header
+    w.writerow(kmer_list)
+
+    row = alt_dataset.copy()
+    input_row_number = 0
+    print(len(alt_dataset))
+    for j in range(0, len(seq_input_data.index)):
+        print(input_row_number)
+        input_row_number += 1
+        for i in range(0, 2):
+            try:
+                for w in range(0, len(seq_input_data[i][j]) - 4):
+                    current_string = seq_input_data[i][j][w:w + 5]
+                    # print(current_string)
+                    # row[tuple(current_string)] = row[tuple(current_string)] + 1  # frequency kmers
+                    # row[current_string] = 1  # yes/no kmer
+                    for feature in row:
+                        if feature[-5:] == current_string:
+                            # print("match found for: " + str(current_string) + " and " + str(feature))
+                            row[feature] = 1  # set kmer to 1
+                # print("end of one seq")
+                if seq_number < 2:  # if we are on the same row
+                    for value in row.values():
+                        full_row.append(value)
+                    seq_number += 1
+                    # print(seq_number)
+                else:  # if the this is the last sequence on the row
+                    for value in row.values():
+                        full_row.append(value)
+                    for t in range(1, 19):
+                        full_row.append(0)
+                    full_row.append(seq_input_data[len(seq_input_data.columns) - 1][j])  # label
+                    w = csv.writer(f)
+                    w.writerow(full_row)
+                    # print("written a row of length: " + str(len(full_row)))
+                    full_row.clear()
+                    seq_number = 1
+                    row.clear()
+                    row = alt_dataset.copy()
+            except:  # bad line
+                print("error")
+
+
+#
+seq_input_data = pd.read_csv('seq_test.csv', header=None)
+
+kmer_neg_data = pd.read_csv('seq_negative_training.csv', nrows=input_rows_read, header=None)
+kmer_neg_data[4] = 'N'
+print(kmer_neg_data.head())
+
+kmer_neg_data = kmer_neg_data.dropna()
+
+kmer_pos_data = pd.read_csv('seq_positive_training.csv', nrows=input_rows_read, header=None)
+kmer_pos_data[4] = 'P'
+print(kmer_pos_data.head())
+
+kmer_pos_data = kmer_pos_data.dropna()
+
+seq_input_data = pd.concat([kmer_neg_data, kmer_pos_data], sort=False, ignore_index=False)
+seq_input_data = seq_input_data.dropna()
+seq_input_data = seq_input_data.reset_index(drop=True)
+print(seq_input_data.head())
+
+print(seq_input_data[len(seq_input_data.columns) - 1][3])
+
+convert_seq_to_kmer()
+#
